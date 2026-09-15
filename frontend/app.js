@@ -1088,7 +1088,7 @@ function persist(){
   localStorage.setItem('pos_settings', JSON.stringify(state.settings));
 }
 
-const API_BASE = window.POS_API_BASE || (window.location.port === '3001' ? '/api' : 'http://localhost:3001/api');
+const API_BASE = window.POS_API_BASE || (['localhost', '127.0.0.1'].includes(window.location.hostname) && window.location.port !== '3001' ? 'http://localhost:3001/api' : '/api');
 
 function saveAuthSession(token, user) {
   state.token = token;
